@@ -16,7 +16,7 @@ function addTarefa(){
             </span>
         </div>
         <div class="item-nome">
-            Teste de tarefa
+            ${valorInput}
         </div>
         <div class="item-botao">
             <button class="delete"><span class="material-symbols-outlined">
