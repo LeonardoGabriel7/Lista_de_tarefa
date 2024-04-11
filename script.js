@@ -25,6 +25,19 @@ function addTarefa(){
         </div>
     </div>`
 
+    //ADICIONAR NOVO ITEM NO MAIN
     main.innerHTML += novoItem;
+
+    //ZERAR O CAMPO
+    input.value = "";
+    input.focus();
     }
 }
+
+//ENVIAR COM ENTER
+input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault(); // Adicione os parênteses aqui
+        btnAdd.click();
+    }
+});
