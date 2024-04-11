@@ -13,10 +13,10 @@ function addTarefa() {
 
         // Criar novo item de tarefa
         let novoItem = `<div id="${contador}" class="item">
-            <div onclick="marcarTarefa(${contador})" class="item-icone">
+            <div onclick="toggleMarcarTarefa(${contador})" class="item-icone">
                 <span id="icone_${contador}" class="material-symbols-outlined">radio_button_unchecked</span>
             </div>
-            <div class="item-nome" onclick="marcarTarefa(${contador})">${valorInput}</div>
+            <div class="item-nome">${valorInput}</div>
             <div class="item-botao">
                 <button class="delete" onclick="deletar(${contador})">
                     <span class="material-symbols-outlined">delete</span>Deletar
@@ -33,13 +33,14 @@ function addTarefa() {
     }
 }
 
-// Função para marcar a tarefa como concluída
-function marcarTarefa(id) {
+// Função para marcar ou desmarcar a tarefa como concluída
+function toggleMarcarTarefa(id) {
     let item = document.getElementById(id);
     item.classList.toggle('clicado');
     
     let icone = document.getElementById(`icone_${id}`);
-    icone.innerHTML = '<span class="material-symbols-outlined">check_circle</span>';
+    let isClicado = item.classList.contains('clicado');
+    icone.innerHTML = isClicado ? '<span class="material-symbols-outlined">check_circle</span>' : '<span class="material-symbols-outlined">radio_button_unchecked</span>';
 }
 
 // Função para deletar a tarefa
