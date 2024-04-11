@@ -1,3 +1,4 @@
+let contador = 0;
 let input = document.getElementById("inputTarefa");
 let btnAdd = document.getElementById("btn-add");
 let main = document.getElementById("areaLista");
@@ -6,10 +7,14 @@ function addTarefa(){
     //PEGAR O VALOR DO INPUT
     let valorInput = input.value
 
+
     //VALIDAÇÃO 
     if ((valorInput !== "") && (valorInput !== null) && (valorInput !== undefined)) {
+
+        ++contador;
+
         //ADICIONANDO A DIV
-        let novoItem = `<div class="item">
+        let novoItem = `<div id= "${contador}" class="item">
         <div class="item-icone">
             <span class="material-symbols-outlined">
                 radio_button_unchecked
@@ -19,7 +24,7 @@ function addTarefa(){
             ${valorInput}
         </div>
         <div class="item-botao">
-            <button class="delete"><span class="material-symbols-outlined">
+            <button onclick="deletar(${contador})" class="delete"><span class="material-symbols-outlined">
                 delete
                 </span>Deletar</button>
         </div>
@@ -33,6 +38,14 @@ function addTarefa(){
     input.focus();
     }
 }
+
+//DELETAR TAREFA
+function deletar(id){
+    let tarefa = document.getElementById(id)
+    tarefa.remove()
+}
+
+
 
 //ENVIAR COM ENTER
 input.addEventListener("keyup", function(event) {
